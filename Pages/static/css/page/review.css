@@ -1,0 +1,88 @@
+.score {
+    box-sizing: border-box;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.score > label > i {
+    cursor: pointer;
+    color: var(--brand-color);
+}
+/* HIDE RADIO */
+[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + i {
+    cursor: pointer;
+}
+
+.review-box {
+    height: 60rem;
+}
+
+.reviewBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.reviewBox--item {
+    box-sizing: border-box;
+    width: 50%;
+    height: 12rem;
+    margin-bottom: 3rem;
+
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.reviewBox--Info {
+    box-sizing: border-box;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.reviewBox--Info > header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+.reviewBox--Info > span {
+    font-size: 1rem;
+}
+#reviewBox--Img {
+    box-sizing: border-box;
+    width: 25%;
+    height: 100%;
+    border: 1px solid black;
+}
+#reviewBtn {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+#reviewBtn > button {
+    background-color: var(--brand-color);
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: none;
+    width: 12rem;
+}
+#reviewBtn > button > a {
+    color: white;
+}
+
+.reviewBox--scoreBox {
+    margin-top: 3rem;
+}

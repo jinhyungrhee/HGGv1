@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="statusBar">
+    <button class="statusBar--homeBtn">H.GG</button>
+    <p class="statusBar--title">공지사항</p>
+    <!-- 버튼위치관련 -->
+    <div class="statusBar--pageBtn">
+        <button onclick="location.href='{% url 'register' %}'">상품등록</button>
+        {% if user.is_authenticated %}
+        <button onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+        {% else %}
+        <button onclick="location.href='{% url 'loginIndex' %}'">로그인</button>
+        {% endif %}
+    </div>
+</div>
+
+<div class="post-box">
+    <div class="notice-board">
+        <section class="notice-board--line__summary">
+            <p class="notice-board--line__small">1</p>
+            <p class="notice-board--line__title">
+                [공지사항] H.GG 좋아요 기능 업데이트!
+            </p>
+            <p class="notice-board--line__small">2021-06-12</p>
+            <p class="notice-board--line__small">관리자</p>
+            <p class="notice-board--line__small">12</p>
+        </section>
+
+        <textarea class="notice-board--posting"> </textarea>
+        <div class="notice-board--division"></div>
+        <button class="notice-board--toList">목록으로</button>
+    </div>
+</div>
+{% endblock %}

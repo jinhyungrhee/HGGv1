@@ -1,0 +1,91 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <div class="ui icon input" style="width: 40%">
+            <input type="text" placeholder="Search..." />
+            <i class="circular search link icon"></i>
+        </div>
+        <!-- 버튼위치관련 -->
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="detailBox">
+        <article class="detailBox--body">
+            <header class="detailBox--name">{{ product.name }}</header>
+            <p class="detailBox--article">
+                <img src="{{ product.image.url }}" height="80%" width="100%" />
+                <!--
+                <img
+                    src="{% static 'images/banner/banner1.png' %}"
+                    height="80%"
+                    width="100%"
+                />
+                <img
+                    src="{% static 'images/banner/banner1.png' %}"
+                    height="80%"
+                    width="100%"
+                />
+                -->
+                {{ product.description }}
+            </p>
+        </article>
+        <section class="goodsInfo">
+            <div class="goodsInfo--tags">
+                <button>{{ product.tag }}</button>
+                <!-- 일단 태그 하나만 사용...
+                <button>태그</button>
+                -->
+            </div>
+            <!-- 데이터 받아오기 -->
+            <div class="goodsInfo--crewPrice">
+                <header>모집인원</header>
+                <span>{{ product.quantity }}명</span>
+            </div>
+            <div class="goodsInfo--crewPrice">
+                <header>가격</header>
+                <span>{{ product.price }}원</span>
+            </div>
+            <div class="ui violet progress"><div class="bar"></div></div>
+
+            <div class="goodsInfo--likeBtn">
+                <button>
+                    <i class="far fa-thumbs-up fa-3x"></i>
+                    <p>56</p>
+                </button>
+            </div>
+            <div class="goodsInfo--shareBtn">
+                <button><i class="fas fa-share-alt"></i>공유하기</button>
+                <button>판매자 정보</button>
+            </div>
+            <div class="goodsInfo--submit">
+                <!-- css cursor : pointer 필요 -->
+                <button
+                    type="submit"
+                    onclick="location.href='{% url 'purchase' %}'"
+                >
+                    신청하기
+                </button>
+            </div>
+        </section>
+    </div>
+    {% endblock %}
+</body>

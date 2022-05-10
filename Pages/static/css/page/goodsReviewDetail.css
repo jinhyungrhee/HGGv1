@@ -1,0 +1,64 @@
+table {
+
+    border: solid 0.07rem lightgray;
+    width: 52vw;
+    height: 30vh;
+    background-color: white;
+    margin-top: 1rem;
+}
+
+td {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+caption {
+    margin-bottom: 1rem;
+}
+
+.text-color {
+    color: var(--brand-color);
+    font-weight: 500;
+}
+
+.summaryInfo {
+    display: flex;
+    justify-content: center;
+}
+
+
+.reviewForm {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewForm--body {
+    box-sizing: border-box;
+    width: 60%;
+    border: 1px solid #ced4da;
+}
+
+.reviewForm--name {
+    color: white;
+    background-color: var(--brand-color);
+    height: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+.reviewForm--article {
+    padding: 2rem;
+    background-color: white;
+    height: auto;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.reviewForm--article > img {
+    margin-bottom: 2rem;
+}

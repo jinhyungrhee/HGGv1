@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/* * {
+  box-sizing: border-box;
+} */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5rem;
+}
+.navbar ul {
+  float: right;
+  margin: 0;
+}
+.navbar li {
+  list-style: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 30px;
+  float: left;
+}
+.navbar li a {
+  margin: 20px;
+  text-decoration: none;
+  color: #545454;
+}
+
+footer {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+.footer-container {
+  height: 200px;
+  color: white;
+  background-color: #6524ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+.footer-container-content {
+  margin-top: 3.125rem;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 18rem;
+}
+#banner1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#banner2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content-header {
+  margin: 20px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #6524ff;
+}
+
+.menubar {
+  height: auto;
+}
+
+/* .ui.menu:first-child {
+  margin-bottom: 0rem;
+} */
+/* swipe border-radius 없애고 컨테이너 붙이기? */

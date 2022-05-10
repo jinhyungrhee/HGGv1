@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <p class="statusBar--title">상품신청</p>
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-box">
+        <div class="appForm">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="appForm--list">
+                    <label>성명</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        name="username"
+                        placeholder="이름을 입력해주세요."
+                    />
+                </div>
+                <div class="appForm--list">
+                    <label>상품수량</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        name="quantity"
+                        placeholder="수량을 입력해주세요."
+                    />
+                </div>
+                <div class="appForm--list">
+                    <label>사이즈</label>
+
+                    <select name="size">
+                        <option value="">사이즈선택</option>
+                        <option value="S">S(95)</option>
+                        <option value="M">M(100)</option>
+                        <option value="L">L(105)</option>
+                    </select>
+                </div>
+                <div class="appForm--list">
+                    <label>수령 방법</label>
+                    <div class="appForm--list__option">
+                        <label for="direct">
+                            <input
+                                type="radio"
+                                id="direct"
+                                name="receive"
+                                value="direct"
+                            />
+                            <i
+                                class="far fa-check-circle xs"
+                                style="margin-right: 0.5rem"
+                            ></i
+                            >대면 수령</label
+                        >
+                    </div>
+                    <div class="appForm--list__option">
+                        <label for="delivery">
+                            <input
+                                type="radio"
+                                id="delivery"
+                                name="receive"
+                                value="delivery"
+                            />
+                            <i
+                                class="far fa-check-circle"
+                                style="margin-right: 0.5rem"
+                            ></i
+                            >택배 수령</label
+                        >
+                    </div>
+                </div>
+                <div class="appForm--list">
+                    <label>색상</label>
+
+                    <select name="color">
+                        <option value="">색상선택</option>
+                        <option value="red">자주색</option>
+                        <option value="beige">베이지색</option>
+                        <option value="purple">자홍색</option>
+                    </select>
+                </div>
+
+                <div class="appForm--list">
+                    <label>기타</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        placeholder="기타 요청사항을 적어주세요."
+                        name="req"
+                    />
+                </div>
+                <button type="submit">신청하기</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/delivery.js' %}"></script>
+    {% endblock %}
+</body>

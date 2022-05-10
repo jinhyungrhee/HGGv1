@@ -1,0 +1,79 @@
+/* index page 상품게시판 ~ 공지사항 네비게이션 바 */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5rem;
+}
+.navbar ul {
+  float: right;
+  margin: 0;
+}
+.navbar li {
+  list-style: none;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 30px;
+  float: left;
+}
+.navbar li a {
+  margin: 1.25rem;
+  text-decoration: none;
+  color: #545454;
+}
+
+footer {
+  width: 100%;
+}
+/* footer 컨텐츠 감싸는 박스 */
+.footer-container {
+  height: 12.5rem;
+  color: white;
+  background-color: #6524ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.footer-container-content {
+  margin-top: 3.125rem;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 18rem;
+}
+#banner1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#banner2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content-header {
+  margin: 1.25rem;
+  padding: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #6524ff;
+}
+
+.menubar {
+  height: auto;
+}
+
+/* .ui.menu:first-child {
+  margin-bottom: 0rem;
+} */
+/* swipe border-radius 없애고 컨테이너 붙이기? */

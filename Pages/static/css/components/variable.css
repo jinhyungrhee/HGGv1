@@ -1,0 +1,7 @@
+:root {
+    --brand-color: #6524ff;
+    --background-color: #ededed;
+}
+/* CSS변수 사용법 - color:var(--brand-color); */
+/* brand-color : 우리 서비스 메인컬러 */
+/* background-color : 배경색 */

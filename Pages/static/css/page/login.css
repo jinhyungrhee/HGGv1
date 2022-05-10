@@ -1,0 +1,71 @@
+#loginBtn {
+    background-color: var(--brand-color);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    width: 25rem;
+    margin-bottom: 5rem;
+}
+
+#loginBox {
+    box-sizing: border-box;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -5rem;
+}
+.loginBox--list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.loginBox--list > input {
+    width: 30rem;
+}
+
+.loginBox--list label {
+    margin-bottom: 0.5rem;
+}
+
+/* 사이즈선택 폼 관련 옵션 */
+.loginBox--list input,
+.loginBox--list select {
+    height: 3.5rem;
+    box-sizing: border-box;
+    width: 25rem;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+}
+.loginBox--save {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+}
+.loginBox--list > input {
+    border: 1px solid var(--brand-color);
+    border-radius: 10px;
+}
+.loginBox--list > input:focus {
+    outline: none;
+}
+
+.loginBox--saveId {
+    display: flex;
+    align-items: center;
+}
+.loginBox--saveId > input {
+    margin-right: 0.3rem;
+}
+
+#loginBox-isUser {
+    text-align: center;
+}

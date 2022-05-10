@@ -1,0 +1,32 @@
+/* components */
+@import "components/notice.css";
+@import "components/variable.css";
+@import "components/appForm.css";
+@import "components/signupInput.css";
+/* page */
+@import "page/reset.css";
+@import "page/status-bar.css";
+@import "page/complete.css";
+@import "page/review.css";
+@import "page/login.css";
+@import "page/signup.css";
+@import "page/goodsList.css";
+@import "page/goodsDetail.css";
+@import "page/noticeDetail.css";
+@import "page/goodsReviewDetail.css";
+@import "page/findId.css";
+@import "page/search.css";
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body {
+    box-sizing: border-box;
+    background-color: #ededed;
+    padding: 3rem 5rem;
+    height: 100%;
+    align-items: center;
+
+    font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
+    padding-top: 3rem;
+}

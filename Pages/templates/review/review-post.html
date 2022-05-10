@@ -1,0 +1,136 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+  {% block content %}
+  <div class="statusBar">
+    <button class="statusBar--homeBtn" onclick="location.href='{% url 'index' %}'">H.GG</button>
+    <p class="statusBar--title">상품후기</p>
+    <div class="statusBar--pageBtn">
+      <button onclick="location.href='{% url 'register' %}'">상품등록</button>
+      {% if user.is_authenticated %}
+        <button onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+      {% else %}
+        <button onclick="location.href='{% url 'loginIndex' %}'">로그인</button>
+      {% endif %}
+    </div>
+  </div>
+  <div class="appForm-box">
+    <div class="appForm">
+      <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <fieldset>
+          <ul>
+            <li class="appForm--list">
+              <label for="title">후기제목</label>
+                <!--name 수정-->
+              <input
+                type="text"
+                name="title"
+                autofocus
+                placeholder="후기제목을 입력해주세요."
+                required
+              />
+            </li>
+            <li class="appForm--list">
+              <label for="content">후기내용</label>
+                <!--name 수정-->
+              <textarea
+                name="content"
+                cols="100"
+                rows="30"
+                autofocus
+                placeholder="내용을 입력해주세요."
+              ></textarea>
+            </li>
+            <li class="appForm--list">
+              <label for="image">상품사진</label>
+                <!--name 수정-->
+              <input type="file" name="image" />
+            </li>
+            <li class="appForm--list">
+              <label for="category">카테고리</label>
+
+              <input
+                type="text"
+                name="category"
+                autofocus
+                placeholder="카테고리를 입력해주세요."
+                required
+              />
+            </li>
+            <li class="appForm--list">
+              <label for="store">업체정보</label>
+
+              <input
+                type="text"
+                name="store"
+                autofocus
+                placeholder="업체명을 입력해주세요."
+                required
+              />
+            </li>
+
+
+            <li class="appForm--list">
+              <label for="delivery">배송기간</label>
+
+              <input
+                type="text"
+                name="delivery"
+                autofocus
+                placeholder="배송기간을 입력해주세요."
+              />
+            </li>
+            <li class="appForm--list">
+              <label for="price">구매가격</label>
+
+              <input
+                type="text"
+                name="price"
+                autofocus
+                placeholder="구매가격을 입력해주세요."
+              />
+            </li>
+          </ul>
+            <!-- 만족도 form 처리는 일단 보류 -->
+          <li class="appForm--list">
+              <label for="satisfaction">만족도</label>
+
+              <div class="score">
+                <label>
+                  <input type="radio" name="satisfaction" value="1" checked/>
+                  <i class="far fa-star fa-3x score10" onclick="scoring(this);"></i>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="2" checked/>
+                  <i class="far fa-star fa-3x score8" onclick="scoring(this);"></i>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="3" checked/>
+                  <i class="far fa-star fa-3x score6" onclick="scoring(this);"></i>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="4" checked/>
+                  <i class="far fa-star fa-3x score4" onclick="scoring(this);"></i>
+                </label>
+                <label>
+                  <input type="radio" name="satisfaction" value="5" checked/>
+                  <i class="far fa-star fa-3x score2" onclick="scoring(this);"></i>
+                </label>
+                <!-- <i class="far fa-star fa-3x score10" onclick="scoring(this);"></i>
+                <i class="far fa-star fa-3x score8" onclick="scoring(this);"></i>
+                <i class="far fa-star fa-3x score6" onclick="scoring(this);"></i>
+                <i class="far fa-star fa-3x score4" onclick="scoring(this);"></i>
+                <i class="far fa-star fa-3x score2" onclick="scoring(this);"></i> -->
+              </div>
+            </li>
+          </ul>
+
+          <div>
+            <button type="submit">등록하기</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/score.js' %}"></script>
+  {% endblock %}
+</body>

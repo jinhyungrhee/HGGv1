@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <form style="width: 40%" action="{% url 'search' %}" method="get">
+            {% csrf_token %}
+            <div class="ui icon input">
+                <input
+                    type="text"
+                    placeholder="상품명을 검색해주세요."
+                    name="q"
+                />
+                <i
+                    onclick="location.href='{% url 'search' %}'"
+                    class="circular search link icon"
+                ></i>
+            </div>
+        </form>
+        <!-- 버튼위치관련 -->
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="content-header">
+        <p>검색결과</p>
+    </div>
+
+    <div class="searchBox">
+        {% for product in products %}
+        <div class="card">
+            <!-- product.id 받아서 보여주기 -->
+            <a
+                href="{% url 'goodsDetail' product.id %}"
+                style="text-decoration: none; text-align: center"
+            >
+                <div
+                    class="card-header"
+                    style="
+                        background-color: #6524ff;
+                        color: white;
+                        font-weight: bold;
+                    "
+                >
+                    {{ product.name }}
+                </div>
+                {% if product.image %}
+                <img
+                    height="300px"
+                    width="250px"
+                    src="{{ product.image.url }}"
+                    alt=""
+                />
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text">
+                        공구기간 :
+                        {{product.created_at|date:'Y-m-d'}}~{{product.due_date|date:'Y-m-d'}}
+                    </p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock %}
+</body>

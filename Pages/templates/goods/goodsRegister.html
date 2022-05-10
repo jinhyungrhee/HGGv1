@@ -1,0 +1,129 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <p class="statusBar--title">상품등록</p>
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="appForm-box">
+        <div class="appForm">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                    <ul>
+                        <li class="appForm--list">
+                            <label for="goods-name">상품명</label>
+                            <!--name 수정-->
+                            <input
+                                type="text"
+                                name="name"
+                                autofocus
+                                placeholder="상품명을 입력해주세요."
+                                required
+                            />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="quantity">모집인원</label>
+
+                            <input
+                                type="text"
+                                name="quantity"
+                                autofocus
+                                placeholder="모집인원을 입력해주세요."
+                                required
+                            />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="due-date">모집기간</label>
+
+                            <input
+                                type="date"
+                                name="due_date"
+                                autofocus
+                                placeholder="모집기간을 입력해주세요."
+                                required
+                            />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="price">가격</label>
+
+                            <input
+                                type="text"
+                                name="price"
+                                autofocus
+                                placeholder="가격을 입력해주세요."
+                                required
+                            />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="image">상품사진</label>
+                            <!--name 수정-->
+                            <input type="file" name="image" />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="description">상품설명</label>
+                            <!--name 수정-->
+                            <textarea
+                                name="description"
+                                cols="100"
+                                rows="30"
+                                autofocus
+                                placeholder="상품설명을 입력해주세요."
+                            ></textarea>
+                        </li>
+                        <li class="appForm--list">
+                            <label for="tag">태그</label>
+
+                            <input
+                                type="text"
+                                name="tag"
+                                autofocus
+                                placeholder="태그를 입력해주세요.(Ex. #패딩 #돕바)"
+                            />
+                        </li>
+                        <li class="appForm--list">
+                            <label for="kakao_link">오픈 카카오톡 링크</label>
+
+                            <input
+                                type="url"
+                                name="kakao_link"
+                                autofocus
+                                placeholder="오픈 카카오톡 링크를 입력해주세요."
+                            />
+                        </li>
+                    </ul>
+
+                    <div>
+                        <button type="submit">등록하기</button>
+                        <button
+                            type="reset"
+                            onclick="location.href='{% url 'index' %}'"
+                        >
+                            취소하기
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>

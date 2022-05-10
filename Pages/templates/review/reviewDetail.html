@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <form  style="width: 40%" action="{% url 'search' %}" method="get">
+            {% csrf_token %}
+            <div class="ui icon input">
+              <input type="text" placeholder="상품명을 검색해주세요." name="q"/>
+              <i onclick="location.href='{% url 'search' %}'" class="circular search link icon"></i>
+            </div>
+          </form>
+        <!-- 버튼위치관련 -->
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="reviewForm">
+        <article class="reviewForm--body">
+            <header class="reviewForm--name">{{ review.title }}</header>
+            <p class="detailBox--article">
+                <img src="{{ review.image.url }}" height="80%" width="100%" />
+                {{ review.content }}
+                <!--
+                <img
+                    src="{% static 'images/banner/banner1.png' %}"
+                    height="80%"
+                    width="100%"
+                />
+                <img
+                    src="{% static 'images/banner/banner1.png' %}"
+                    height="80%"
+                    width="100%"
+                />
+                -->
+            </p>
+        </article>
+    </div>
+
+    <div class="summaryInfo">
+        <table>
+            <tr>
+                <td class="text-color">카테고리</td>
+                <td>
+                    {{ review.category }}
+                    <!--db에서 정보-->
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-color">업체</td>
+                <td>{{ review.store }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-color">배송기간</td>
+                <td>{{ review.delivery }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-color">가격</td>
+                <td>{{ review.price }}</td>
+            </tr>
+
+            <tr>
+                <td class="text-color" style="padding-bottom: 1rem">만족도</td>
+                <td>
+                    {% if review.satisfaction == '1' %}
+                    <div class="reviewBox--scoreBox">
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                    </div>
+                    {% elif review.satisfaction == '2' %}
+                    <div class="reviewBox--scoreBox">
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                    </div>
+                    {% elif review.satisfaction == '3' %}
+                    <div class="reviewBox--scoreBox">
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                    </div>
+                    {% elif review.satisfaction == '4' %}
+                    <div class="reviewBox--scoreBox">
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="far fa-star fa-1x"></i>
+                    </div>
+                    {% elif review.satisfaction == '5' %}
+                    <div class="reviewBox--scoreBox">
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                        <i class="fas fa-star fa-1x"></i>
+                    </div>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endblock %}
+</body>

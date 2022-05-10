@@ -1,0 +1,12 @@
+#loginBtn {
+  position: relative;
+  top: -5rem;
+  background-color: var(--brand-color);
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem 0;
+  cursor: pointer;
+  width: 18rem;
+}

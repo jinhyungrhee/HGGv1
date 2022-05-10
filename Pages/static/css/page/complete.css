@@ -1,0 +1,71 @@
+/* 완료 표시 */
+/* Todo : 이미지 다른 모니터에서 테스트 후 해상도 체크 */
+
+/* 이미지 & 완료버튼 포함하는 전체박스 */
+.completeImage {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 8rem;
+}
+
+/* 상품등록 완료 & 상품 보러가기 버튼 박스 */
+.completeBtn {
+    box-sizing: border-box;
+    width: 50%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -5rem;
+}
+
+/* 상품 등록 완료 버튼 레이이웃 */
+#registerComplete {
+    height: 5rem;
+    width: 16rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #8f52ca;
+    font-weight: bold;
+    position: relative;
+}
+/* 상품 등록 완료 체크표시 그림 */
+#registerComplete svg {
+    margin-right: 1rem;
+}
+
+/* 상품 보러가기 버튼 */
+.completeBtn button {
+    background-color: var(--brand-color);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 16rem;
+}
+
+#kakaoImg {
+    margin-bottom: 6rem;
+}
+
+.completeImage-kakao {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex-direction: column;
+    margin-bottom: 8rem;
+    margin-top: 8rem;
+}

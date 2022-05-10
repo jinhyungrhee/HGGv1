@@ -1,0 +1,7 @@
+.userInput {
+  box-sizing: border-box;
+  width: 40%;
+  height: 50%;
+  border: 2px solid var(---brand-color);
+  border-radius: 10px;
+}

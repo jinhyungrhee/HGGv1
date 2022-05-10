@@ -1,0 +1,140 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <!-- 버튼위치관련 -->
+        <form style="width: 40%" action="{% url 'search' %}" method="get">
+            {% csrf_token %}
+            <div class="ui icon input">
+                <input
+                    type="text"
+                    placeholder="상품명을 검색해주세요."
+                    name="q"
+                />
+                <i
+                    onclick="location.href='{% url 'search' %}'"
+                    class="circular search link icon"
+                ></i>
+            </div>
+        </form>
+        <div class="statusBar--pageBtn">
+            <!-- 버튼위치관련 -->
+            <div class="statusBar--pageBtn">
+                <button onclick="location.href='{% url 'register' %}'">
+                    상품등록
+                </button>
+                <button onclick="location.href='{% url 'loginIndex' %}'">
+                    로그인
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="menubar">
+        <div
+            class="ui violet three item inverted menu"
+            style="background-color: #6524ff"
+        >
+            <a class="active item" href="{% url 'productList' %}">
+                상품게시판
+            </a>
+            <a class="item" href="{% url 'reviewList' %}"> 후기게시판 </a>
+            <a class="item" href="{% url 'noticeBoard' %}"> 공지사항 </a>
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img
+                        id="banner1"
+                        src="{% static 'images/banner/banner1.png' %}"
+                    />
+                </div>
+                <div class="swiper-slide">
+                    <img
+                        id="banner2"
+                        src="{% static 'images/banner/banner2.png' %}"
+                    />
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <script>
+        var mySwiper = new Swiper(".swiper-container", {
+            // 슬라이드를 버튼으로 움직일 수 있습니다.
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+            pagination: {
+                el: ".swiper-pagination",
+                type: "bullets",
+            },
+            // 3초마다 자동으로 슬라이드가 넘어갑니다. 1초 = 1000
+            autoplay: {
+                delay: 3000,
+            },
+        });
+    </script>
+    <div class="ui divider"></div>
+    <div class="content-header">
+        <p>상품 목록</p>
+        <div class="ui violet two item menu">
+            <a class="item active" style="font-weight: bold"> 의류 </a>
+            <a class="item" style="font-weight: bold"> 생활용품 </a>
+        </div>
+    </div>
+    <!-- todo : anchor 삽입 -->
+    <div class="goodsBox">
+        <div class="goodsList">
+            <!-- DB에 저장된 내용 for문으로 가져오기 -->
+            <!-- ListView가 object_list context변수 전달-->
+            {% for product in object_list %}
+            <div class="card">
+                <!-- product.id 받아서 보여주기 -->
+                <a
+                    href="{% url 'goodsDetail' product.id %}"
+                    style="text-decoration: none; text-align: center"
+                >
+                    <div
+                        class="card-header"
+                        style="
+                            background-color: #6524ff;
+                            color: white;
+                            font-weight: bold;
+                        "
+                    >
+                        {{ product.name }}
+                    </div>
+                    {% if product.image %}
+                    <img
+                        height="300px"
+                        width="250px"
+                        src="{{ product.image.url }}"
+                        alt=""
+                    />
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">
+                            공구기간 <br />
+                            {{product.created_at|date:'Y-m-d'}}~{{product.due_date|date:'Y-m-d'}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</body>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button class="statusBar--homeBtn">H.GG</button>
+        <header class="statusBar--title">회원정보 입력</header>
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'loginIndex' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="userInputBox">
+        <div class="userInput">
+            <form class="userInput--id" placeholder="닉네임을 입력해주세요.">
+                <label>닉네임</label>
+                <input type="text" placeholder="닉네임을 입력해주세요." />
+            </form>
+            <form class="userInput--mail">
+                <label>웹메일</label>
+                <input
+                    type="text"
+                    placeholder="@hufs.ac.kr앞 부분까지만 입력해주세요"
+                />
+            </form>
+            <form class="userInput--id">
+                <label>카카오톡 ID</label>
+                <input type="text" placeholder="카카오톡 ID를 입력해주세요." />
+            </form>
+        </div>
+        <div class="phoneAuth_complete">
+            <span class="phoneAuth--phoneNumber"></span>
+            <span class="phoneAuth--check">번호가 확인되었습니다.</span>
+        </div>
+    </div>
+    {% endblock %}
+</body>

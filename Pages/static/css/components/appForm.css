@@ -1,0 +1,110 @@
+/* purchase.html goodsRegister.html 공통css */
+/* 전체 폼을 감싸는 박스 */
+.appForm-box,
+.form-box,
+.review-box {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 90rem;
+}
+/* 상품 신청 페이지 폼 높이 */
+.appForm-box {
+  height: 90rem;
+}
+
+/* 폼 컨텐츠 중앙정렬을 위해 position 지정 */
+.appForm {
+  box-sizing: border-box;
+  height: 50vh;
+  width: 70%;
+  position: relative;
+  left: 5rem;
+  top: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+/* 폼 박스 각각의 사이즈 및 내부 레이아웃 구성 */
+.appForm--list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.appForm--list label {
+  margin-bottom: 0.5rem;
+}
+
+/* 사이즈선택 폼 관련 옵션 */
+.appForm--list input,
+.appForm--list select {
+  height: 3rem;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+}
+
+/* 상품신청 페이지 CSS */
+
+/* 수령방법 폼 레이아웃 */
+.appForm--list__option {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.appForm--list__option label {
+  margin: 0;
+}
+.appForm--list__option input {
+  margin-right: 1rem;
+}
+
+/* 신청버튼 */
+form button {
+  box-sizing: border-box;
+  width: 80%;
+  background-color: var(--brand-color);
+  color: white;
+  font-size: 1rem;
+  height: 3rem;
+  margin-top: 1rem;
+  border: none;
+}
+
+/* 배송지입력 */
+.deliveryDest {
+  height: 3rem;
+  box-sizing: border-box;
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  background-color: white;
+  margin-top: 1rem;
+}
+
+textarea {
+  resize: none;
+  box-sizing: border-box;
+  width: 80%;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+/* 수령방법 폼 관련 옵션 */
+input[type="radio"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--brand-color);
+}
+/* 상품 등록 페이지 폼 높이 */
+.form-box {
+  height: 50rem;
+}

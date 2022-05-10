@@ -1,0 +1,56 @@
+/* 홈 바 박스 레이아웃 */
+.statusBar {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  position: relative;
+
+  background-color: var(--background-color);
+  margin-bottom: 2rem;
+}
+/* 홈 바 전체 버튼들 css */
+.statusBar button {
+  border: none;
+  cursor: pointer;
+}
+
+/* H.GG버튼 */
+.statusBar--homeBtn {
+  color: var(--brand-color);
+  font-size: 2.6rem;
+  font-weight: bold;
+}
+
+/* 홈 바 타이틀 - 공자시항, 상품신청, etc.. */
+.statusBar--title {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* 홈 바 우측 버튼 - 로그인, 상품등록 등 (로그인, 로그아웃상태 공통CSS)*/
+.statusBar--pageBtn,
+.statusBar--pageBtn__login {
+  color: #707070;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 홈 바 우측 버튼 - 로그아웃 상태 */
+.statusBar--pagebtn {
+  width: 8rem;
+}
+
+/* 로그인 상태 - 버튼의 추가로 width확장 */
+.statusBar--pageBtn__login {
+  width: 12rem;
+}
+
+/* 로그인/로그아웃상태 버튼CSS */
+.statusBar--pageBtn button,
+.statusBar--pageBtn__login button {
+  font-size: 0.9rem;
+}

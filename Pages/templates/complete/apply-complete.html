@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+  {% block content %}
+  <div class="statusBar">
+    <button class="statusBar--homeBtn" onclick="location.href='{% url 'index' %}'">H.GG</button>
+  </div>
+  <div class="completeImage">
+    <img src="{% static 'images/logo.png' %}" width="40%" height="100%" />
+    <div class="completeBtn">
+      <div id="registerComplete">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="45"
+          height="45"
+          viewBox="0 0 40 40"
+        >
+          <rect
+            id="사각형_3"
+            data-name="사각형 3"
+            width="40"
+            height="40"
+            rx="20"
+            fill="#6524ff"
+          />
+          <path
+            id="패스_7618"
+            data-name="패스 7618"
+            d="M61.687,870.75l6.719,6.087,13.281-12"
+            transform="translate(-51.187 -851.337)"
+            fill="none"
+            stroke="#fff"
+            stroke-width="4"
+          />
+        </svg>
+
+        신청 완료
+      </div>
+      <button onclick="location.href='{% url 'index' %}'">홈으로 돌아가기</button>
+    </div>
+  </div>
+
+  {% endblock %}
+</body>
