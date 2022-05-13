@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 from django.contrib.auth import views
-from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, signup, UserLoginView, posts_list, ReviewDetail, post_detail, searchResult
-
+from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, UserLoginView, posts_list, ReviewDetail, post_detail, searchResult
+# from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, signup, UserLoginView, posts_list, ReviewDetail, post_detail, searchResult
 
 urlpatterns = [
     path('noticeBoard/', posts_list, name="noticeBoard"),
@@ -39,12 +39,15 @@ urlpatterns = [
     path('complete1/', registerComplete, name="registerComplete"),
     # 리뷰등록 완료 페이지
     path('complete2/', reviewComplete, name="reviewComplete"),
-    path('login/', UserLoginView.as_view(), name="loginIndex"),
+    # 로그인 -> **수정필요**
+    # path('login/', UserLoginView.as_view(), name="loginIndex"),
+    # 로그아웃 -> **수정필요**
     path('accout/logout/', views.LogoutView.as_view(), name='logout'),
     # 신청 완료 페이지
     path('complete3/', applyComplete, name="applyComplete"),
     path('userInformation/', userInformation, name="userInformation"),
-    path('signup/', signup, name="signup"),
+    # 회원가입 -> **수정필요**
+    # path('signup/', signup, name="signup"),
     # 상품 상세보기
     path('goodsDetail/<int:pk>', GoodsDetail.as_view(), name="goodsDetail"),
     path('reviewBoard/', reviewBoard, name="reviewBoard"),

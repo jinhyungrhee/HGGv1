@@ -1,6 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+from .validators import validate_no_special_characters, validate_hufs_email
 # Create your models here.
+# User 테이블 정의
+class User(AbstractUser):
+    email = models.EmailField(
+        max_length=50,
+        unique=True,
+        validators=[validate_hufs_email],
+        error_messages={'unique':'학교 이메일이 아닙니다.'},
+        verbose_name="이메일"
+    )
+    nickname = models.CharField(
+        max_length=15, 
+        unique=True, 
+        null=True,
+        validators=[validate_no_special_characters],
+        error_messages={'unique' : '이미 사용중인 닉네임입니다.'},
+        verbose_name="닉네임"
+    )
+    kakaoId = models.CharField(max_length=50, verbose_name="카카오톡 ID")
+
+    def __str__(self):
+        return self.username
+
 # Product 테이블 정의
 class Product(models.Model):
     name = models.CharField(max_length=256, verbose_name='상품명')

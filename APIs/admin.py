@@ -1,7 +1,12 @@
 from django.contrib import admin
-from APIs.models import Product, Review, Apply, Post
+from django.contrib.auth.admin import UserAdmin
+from APIs.models import Product, Review, Apply, Post, User
 
 # Register your models here.
+# User테이블 등록
+admin.site.register(User, UserAdmin)
+UserAdmin.fieldsets += (("custom fields", {"fields": ("nickname", "kakaoId", )}),)
+
 @admin.register(Product) # 데코레이터 - register함수 대신 사용
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'description', 'image', 'created_at')

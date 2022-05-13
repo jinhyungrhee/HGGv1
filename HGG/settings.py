@@ -47,6 +47,14 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+# 웹 서비스의 로그인에 대한 URL 설정 -> "account_login": allauth가 제공하는 login url
+# (뷰 접근 제어: LoginRequiredMixin은 로그인이 되어있지 않은 상태면 LOGIN_URL에 설정된 로그인 페이지로 안내함)
+LOGIN_URL = "account_login"
+
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
+
+ACCOUNT_LOGOUT_ON_GET = True # 별로 필요 없을듯?
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,9 +64,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'Pages.apps.PagesConfig',
     'APIs.apps.ApisConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'widget_tweaks',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -106,17 +121,21 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
+    # 위에것들은 무시
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'APIs.validators.CustomPasswordValidator',
     },
 ]
 
@@ -155,3 +174,47 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# APIs 앱에 있는 User모델을 이 프로젝트의 User모델로 사용
+AUTH_USER_MODEL = "APIs.User"
+
+# 유저 인증 로직을 담당하는 컴포넌트
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+# 터미널 콘솔로 이메일을 보내도록 하는 설정
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# 이메일로 로그인하고 회원가입
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+# 회원가입 시 이메일 입력 필수로 변경
+ACCOUNT_EMAIL_REQUIRED = True
+
+# username 필드 입력 필수 (default)
+ACCOUNT_USERNAME_REQUIRED = True
+
+# 항상 user session 기억하기
+ACCOUNT_SESSION_REMEMBER = True
+# 쿠키 유효시간 지정
+SESSION_COOKIE_AGE = 3600 # 1시간(=3600초)으로 변경
+
+# SignupForm 추가
+ACCOUNT_SIGNUP_FORM_CLASS = "APIs.forms.SignupForm"
+
+# 입력 오류 시 비밀번호 유지
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
+
+# 이메일 인증 메시지 변경
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+# 인증 완료 페이지로 리다이렉션
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "account_email_confirmation_done"
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_done" 

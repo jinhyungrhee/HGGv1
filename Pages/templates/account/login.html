@@ -7,7 +7,7 @@
                 H.GG
             </button>
         </div>
-        <form method="post" id="loginBox" action="{% url 'loginIndex' %}">
+        <form method="post" id="loginBox" action="{% url 'account_login' %}">
             {% csrf_token %}
             <fieldset>
                 <li class="loginBox--list">

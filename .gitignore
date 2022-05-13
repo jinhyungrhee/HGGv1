@@ -176,3 +176,5 @@ cython_debug/
 
 # Auth Keys
 secrets.json
+
+.vscode

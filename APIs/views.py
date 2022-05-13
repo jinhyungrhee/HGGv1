@@ -6,7 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView, CreateView, ListView, DetailView
 from django.views.generic.list import MultipleObjectMixin
 from .models import Product, Review
-from .forms import RegisterForm, UserForm
+# from .forms import RegisterForm, UserForm
+from .forms import RegisterForm
 from .models import Product, Review, Apply, Post
 from .forms import RegisterForm
 from django.contrib.auth.views import LoginView
@@ -56,28 +57,28 @@ class ReviewDetail(DetailView):
         #context['prodcut_list'] = Product.objects.filter()
         return context
 
-def signup(request):
-    # 계정 생성
-    if request.method == "POST":
+# def signup(request):
+#     # 계정 생성
+#     if request.method == "POST":
         
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password2')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user) #로그인
-            return redirect('/')
+#         form = UserForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password2')
+#             user = authenticate(username=username, password=raw_password)
+#             login(request, user) #로그인
+#             return redirect('/')
 
-    else:
-        form = UserForm()
-    return render(request, 'signup/signup.html', {'form': form})
+#     else:
+#         form = UserForm()
+#     return render(request, 'signup/signup.html', {'form': form})
 
-class UserLoginView(LoginView):
-    template_name = 'login/login.html'
-    def form_invalid(self, form):
-        messages.error(self.request, '로그인에 실패하였습니다.')
-        return super().form_invalid(form)
+# class UserLoginView(LoginView):
+#     template_name = 'login/login.html'
+#     def form_invalid(self, form):
+#         messages.error(self.request, '로그인에 실패하였습니다.')
+#         return super().form_invalid(form)
 
 class GoodsDetail(DetailView):
     model = Product # queryset = Product.objects.all()과 동일

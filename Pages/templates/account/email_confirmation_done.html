@@ -1,0 +1,10 @@
+이메일 인증이 완료되었습니다.
+<!-- 유저가 로그인된 상태면 -->
+{% if user.is_authenticated %}
+  <!-- 홈 링크 (url name 사용)-->
+  <a href="{% url 'index' %}">홈으로 이동</a>
+<!-- 유저가 로그아웃 상태면 -->  
+{% else %}
+  <!-- 로그인 페이지 링크 (url name 사용)-->
+  <a href="{% url 'account_login' %}">로그인 하기</a>
+{% endif %}
