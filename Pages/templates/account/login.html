@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static %} {% load widget_tweaks %}
 <body>
     {% block content %}
         <div class="statusBar">
@@ -10,7 +10,28 @@
         <form method="post" id="loginBox" action="{% url 'account_login' %}">
             {% csrf_token %}
             <fieldset>
+                <!-- non-field error 처리 -->
+                {% for error in form.non_field_errors %}
+                    <div class="form-error error-message">{{ error }}</div> <!-- 에러 메시지 -->
+                {% endfor %}
+                <!-- input태그를 전부 장고의 form으로 변경 -->
                 <li class="loginBox--list">
+                    <label for="email">이메일</label>
+                    {{ form.login|attr:"placeholder:이메일"|attr:"id:email"|attr:"name:email"|attr:"type:text"|add_error_class:"error"}}
+                    <!-- 각 필드에 대한 오류 처리-->
+                    {% for error in form.login.errors %}
+                    <div class="form-error error-message">{{ error }}</div> <!-- 에러 메시지 -->
+                    {% endfor %}
+                </li>
+                <li class="loginBox--list">
+                    <label for="password">비밀번호</label>
+                    {{ form.password|attr:"placeholder:비밀번호"|attr:"id:passwrod"|attr:"name:password"|attr:"type:password"|add_error_class:"error"}}
+                    <!-- 각 필드에 대한 오류 처리-->
+                    {% for error in form.password.errors %}
+                      <div class="form-error error-message">{{ error }}</div> <!-- 에러 메시지 -->
+                    {% endfor %}
+                </li>
+                <!-- <li class="loginBox--list">
                     <label for="username">아이디</label>
                     <input
                         required="required"
@@ -19,8 +40,8 @@
                         id="username"
                         value="{{ form.username.value|default_if_none:'' }}"
                         placeholder="아이디를 입력해주세요."/>
-                </li>
-                <li class="loginBox--list">
+                </li> -->
+                <!-- <li class="loginBox--list">
                     <label for="password">비밀번호</label>
                     <input
                         required="required"
@@ -29,12 +50,12 @@
                         id="password"
                         value="{{ form.password.value|default_if_none:'' }}"
                         placeholder="비밀번호를 입력해주세요."/>
-                </li>
-                {% if messages %}
+                </li> -->
+                <!-- {% if messages %}
                     {% for message in messages %}
                         <span style="color: red; font-size:bold;">{{ message }}</span>
                     {% endfor %}
-                {% endif %}
+                {% endif %} -->
                 <div class="loginBox--save">
                     <span class="loginBox--saveId">
                         <input type="radio"/>
@@ -44,7 +65,7 @@
                         계정을 잊으셨나요?
                     </a>
                 </div>
-                <button id="loginBtn">
+                <button id="loginBtn" type="submit">
                     로그인
                 </button>
                 <div id="loginBox-isUser">

@@ -121,19 +121,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-    # 위에것들은 무시
     {
         'NAME': 'APIs.validators.CustomPasswordValidator',
     },
@@ -218,3 +205,6 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 # 인증 완료 페이지로 리다이렉션
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "account_email_confirmation_done"
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "account_email_confirmation_done" 
+
+# account email의 제목 앞에 붙는 문자열을 빈 문자열로 만듦
+ACCOUNT_EMAIL_SUBJECT_PREFIX = ""

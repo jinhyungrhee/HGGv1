@@ -9,7 +9,7 @@
       {% if user.is_authenticated %}
         <button onclick="location.href='{% url 'logout' %}'">로그아웃</button>
       {% else %}
-        <button onclick="location.href='{% url 'loginIndex' %}'">로그인</button>
+        <button onclick="location.href='{% url 'account_login' %}'">로그인</button>
       {% endif %}
     </div>
   </div>

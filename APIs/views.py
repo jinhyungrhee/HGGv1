@@ -141,3 +141,8 @@ def searchResult(request):
         products = Product.objects.all().filter(Q(name__contains=query) | Q(description__contains=query))
     
     return render(request, 'search/search.html', {'query':query, 'products':products})
+
+# 시안 제작 페이지
+def draw(request):
+
+    return render(request, 'drawing/draw-board.html')

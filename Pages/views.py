@@ -36,3 +36,7 @@ def submitComplete(request):
 # 신청 완료 페이지
 def applyComplete(request):
     return render(request, 'complete/apply-complete.html')
+
+# 시안 제작 페이지
+def draw(request):
+    return render(request, 'drawing/draw-board.html')
