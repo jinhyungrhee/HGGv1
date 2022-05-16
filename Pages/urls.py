@@ -58,5 +58,4 @@ urlpatterns = [
     path('search/', searchResult, name='search'),
     # 시안제작 기능
     path('drawing/', draw, name='draw'),
-
 ]
