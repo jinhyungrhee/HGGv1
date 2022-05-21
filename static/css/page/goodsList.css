@@ -1,0 +1,43 @@
+.goodsBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.goodsList {
+    box-sizing: border-box;
+    height: auto;
+    display: grid;
+    grid-auto-rows: minmax(300px, auto);
+    grid-template-columns: repeat(4, 300px);
+    grid-gap: 20px 30px;
+}
+
+.goodsList--item {
+    margin: 0 auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.goodsList--name {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+.goodsList--calender {
+    text-align: center;
+    color: black;
+    font-size: 1.2rem;
+}
+.goodsList--item > a {
+    text-decoration: none;
+}
+.goodsList--item > a > img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}

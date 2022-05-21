@@ -97,12 +97,12 @@ var $selectBlendType = $('[name="select-blend-type"]');
 var imageEditor = new tui.ImageEditor('.tui-image-editor', {
   includeUI: {
     loadImage: {
-      path: '../static/img/sian.png',
+      path: 'static/img/sian.png',
       name: 'SampleImage',
     },
   },
   cssMaxWidth: 700,
-  cssMaxHeight: 1000,
+  cssMaxHeight: 500,
   selectionStyle: {
     cornerSize: 20,
     rotatingPointOffset: 70,
@@ -183,7 +183,7 @@ function base64ToBlob(data) {
 function resizeEditor() {
   var $editor = $('.tui-image-editor');
   var $container = $('.tui-image-editor-canvas-container');
-  var height = '800px';
+  var height = parseFloat($container.css('max-height'));
 
   $editor.height(height);
 }

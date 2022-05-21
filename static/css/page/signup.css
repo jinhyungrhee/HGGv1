@@ -1,0 +1,56 @@
+#registerBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.registerBox--list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 25rem;
+    height: 3.5rem;
+}
+.registerBox--list label {
+    margin-bottom: 1rem;
+}
+.registerBox--list label:first-child {
+    margin-top: 1rem;
+}
+.registerBox--list > input {
+    border: none;
+    background-color: var(--guide-color);
+    border-bottom: 1px solid var(--brand-color);
+    margin-bottom: 1rem;
+}
+
+.registerBox--list > input:focus {
+    outline: none;
+}
+
+#registerBox > fieldset {
+    border: 2px solid var(--brand-color);
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* 모니터환경 테스트 필요 */
+#registerBtn > .fa-check {
+    position: relative;
+    left: -1rem;
+}
+
+#registerBtn {
+    background-color: var(--brand-color);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    width: 10rem;
+    margin-bottom: 5rem;
+}

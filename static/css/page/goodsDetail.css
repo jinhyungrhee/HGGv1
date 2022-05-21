@@ -1,0 +1,125 @@
+.detailBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detailBox--body {
+    box-sizing: border-box;
+    border
+    width: 60%;
+}
+.detailBox--name {
+    color: white;
+    background-color: var(--brand-color);
+    height: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+.detailBox--article {
+    padding: 2rem;
+    background-color: white;
+    height: auto;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.detailBox--article > img {
+    margin-bottom: 2rem;
+}
+.ui.progress {
+    width: 50vw;
+}
+.ui.progress.bar {
+    background-color: var(--brand-color);
+}
+
+.goodsInfo--tags > button {
+    border: 3px solid rgba(101, 36, 255, 100%);
+    border-radius: 10px;
+    background-color: rgba(216, 161, 220, 100%);
+    color: var(--brand-color);
+    font-weight: bold;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.goodsInfo--tags {
+    box-sizing: border-box;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.goodsInfo--crewPrice > header {
+    font-size: 1.5rem;
+    color: var(--brand-color);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.goodsInfo--crewPrice > span {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.goodsInfo--likeBtn,
+.goodsInfo--shareBtn {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.goodsInfo--likeBtn > button {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 4rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.goodsInfo--shareBtn {
+    width: 100%;
+}
+.goodsInfo--shareBtn > button {
+    height: 2.5rem;
+    padding: 0.3rem;
+    width: 10rem;
+    background-color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.goodsInfo--shareBtn > button:first-child {
+    margin-right: 1rem;
+    text-align: center;
+}
+.goodsInfo--shareBtn > button:first-child > i {
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+
+.goodsInfo--submit {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.goodsInfo--submit > button {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--brand-color);
+    color: white;
+    font-size: 1.3rem;
+    height: 3rem;
+    margin-top: 1rem;
+    border: none;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}

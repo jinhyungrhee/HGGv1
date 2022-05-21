@@ -1,0 +1,11 @@
+.searchBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-right: 8%;
+    margin-bottom: 3rem;
+}
