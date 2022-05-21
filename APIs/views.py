@@ -1,13 +1,15 @@
+from math import ceil
 from django.contrib.auth import authenticate, login
 from django.http import request
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, CreateView, ListView, DetailView
 from django.views.generic.list import MultipleObjectMixin
+
 from .models import Product, Review
 # from .forms import RegisterForm, UserForm
-from .forms import RegisterForm
+from .forms import RegisterForm, PurchaseCreateForm
 from .models import Product, Review, Apply, Post
 from .forms import RegisterForm
 from django.contrib.auth.views import LoginView
@@ -90,17 +92,39 @@ class GoodsDetail(DetailView):
         #생성된 context는 Template으로 전달됨
         context = super().get_context_data(**kwargs)
         #context['prodcut_list'] = Product.objects.filter()
+        product_id = self.kwargs.get("pk") #해당 상품의 pk id
+        total_quantity = 0 #현재까지 주문량
+        product = Product.objects.get(pk=product_id)
+        applies = Apply.objects.filter(product__id = product_id)
+        for apply in applies:
+            total_quantity += apply.quantity
+        percent = ceil((total_quantity/product.quantity) * 100)
+        print(percent)
+        context['total_quantity'] = total_quantity
+        context['percent'] = percent
         return context
 
 class ApplyCreate(CreateView):
     model = Apply
-    fields = '__all__'
     template_name = 'goods/purchase.html'
-    success_url = '../complete3/'
+    form_class = PurchaseCreateForm
 
-    def post(self, request, *args, **kwargs):
-        self.object = None
-        return super().post(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        purchase_id = self.kwargs.get("purchase_id")
+        context["purchase_id"] = purchase_id
+        return context
+
+    def get_success_url(self):
+        return reverse('applyComplete')
+    
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.product = Product.objects.get(pk=form.data.get('product'))
+        return super().form_valid(form)
 
 #공지사항 관련 API
 def posts_list(request):

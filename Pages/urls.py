@@ -27,7 +27,7 @@ urlpatterns = [
     path('noticeDetail/<int:post_id>', post_detail, name="noticeDetail"),
     path('', index, name="index"),
     # 신청하기
-    path('purchase/', ApplyCreate.as_view(), name="purchase"),
+    path('purchase/<int:purchase_id>', ApplyCreate.as_view(), name="purchase"),
     # 수정 : path('register/', register, name="register"),
     path('register/', ProductCreate.as_view(), name='register'),
     # 상품리스트 보여주기

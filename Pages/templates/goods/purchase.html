@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 <body>
     {% block content %}
     <div class="statusBar">
@@ -29,90 +31,50 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="appForm--list">
-                    <label>성명</label>
-                    <input
-                        autocomplete="off"
-                        type="text"
-                        name="username"
-                        placeholder="이름을 입력해주세요."
-                    />
+                    <label for = "{{form.username.id_for_label}}">{{form.username.label}}</label>
+                    {{form.username|attr:"autocomplete:off"|attr:"placeholder:이름을 입력해주세요."}}
                 </div>
                 <div class="appForm--list">
-                    <label>상품수량</label>
-                    <input
-                        autocomplete="off"
-                        type="text"
-                        name="quantity"
-                        placeholder="수량을 입력해주세요."
-                    />
+                    <label for = "{{form.quantity.id_for_label}}">{{form.quantity.label}}</label>
+                    {{form.quantity|attr:"autocomplete:off"|attr:"placeholder:수량을 입력해주세요."}}
                 </div>
                 <div class="appForm--list">
-                    <label>사이즈</label>
-
+                    <label for = "{{form.size.id_for_label}}">{{form.size.label}}</label>
                     <select name="size">
-                        <option value="">사이즈선택</option>
-                        <option value="S">S(95)</option>
-                        <option value="M">M(100)</option>
-                        <option value="L">L(105)</option>
+                        {% for radio in form.size %}
+                            {{ radio }}
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="appForm--list">
-                    <label>수령 방법</label>
-                    <div class="appForm--list__option">
-                        <label for="direct">
-                            <input
-                                type="radio"
-                                id="direct"
-                                name="receive"
-                                value="direct"
-                            />
-                            <i
-                                class="far fa-check-circle xs"
-                                style="margin-right: 0.5rem"
-                            ></i
-                            >대면 수령</label
-                        >
-                    </div>
-                    <div class="appForm--list__option">
-                        <label for="delivery">
-                            <input
-                                type="radio"
-                                id="delivery"
-                                name="receive"
-                                value="delivery"
-                            />
-                            <i
-                                class="far fa-check-circle"
-                                style="margin-right: 0.5rem"
-                            ></i
-                            >택배 수령</label
-                        >
-                    </div>
+                    <label for = "{{form.receive.id_for_label}}">{{form.receive.label}}</label>
+                    <select name="receive">
+                        {% for radio in form.receive %}
+                            {{ radio }}
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="appForm--list">
-                    <label>색상</label>
-
+                    <label for = "{{form.address.id_for_label}}">{{form.address.label}}</label>
+                    {{form.address|attr:"autocomplete:off"|attr:"placeholder:택배 수령시 주소를 입력해주세요."}}
+                </div>
+                <div class="appForm--list">
+                    <label for = "{{form.color.id_for_label}}">{{form.color.label}}</label>
                     <select name="color">
-                        <option value="">색상선택</option>
-                        <option value="red">자주색</option>
-                        <option value="beige">베이지색</option>
-                        <option value="purple">자홍색</option>
+                        {% for radio in form.color %}
+                            {{ radio }}
+                        {% endfor %}
                     </select>
                 </div>
-
                 <div class="appForm--list">
-                    <label>기타</label>
-                    <input
-                        autocomplete="off"
-                        type="text"
-                        placeholder="기타 요청사항을 적어주세요."
-                        name="req"
-                    />
+                    <label for = "{{form.req.id_for_label}}">{{form.req.label}}</label>
+                    {{form.req|attr:"autocomplete:off"|attr:"placeholder:기타 요청사항을 입력해주세요."}}
                 </div>
+                <input type = "hidden" value ="{{purchase_id}}" name="{{form.product.name}}">
                 <button type="submit">신청하기</button>
             </form>
         </div>
     </div>
-    <script src="{% static 'js/delivery.js' %}"></script>
+    <!-- <script src="{% static 'js/delivery.js' %}"></script> -->
     {% endblock %}
 </body>

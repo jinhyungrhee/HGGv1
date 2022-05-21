@@ -48,7 +48,7 @@
                 {{ product.description }}
             </p>
         </article>
-        <section class="goodsInfo">
+        <section class="goodsInfo" style="width:700px">
             <div class="goodsInfo--tags">
                 <button>{{ product.tag }}</button>
                 <!-- 일단 태그 하나만 사용...
@@ -57,14 +57,16 @@
             </div>
             <!-- 데이터 받아오기 -->
             <div class="goodsInfo--crewPrice">
-                <header>모집인원</header>
-                <span>{{ product.quantity }}명</span>
+                <header>신청인원/목표인원</header>
+                <span>{{total_quantity}}/{{ product.quantity }}명</span>
+                <div style="margin-bottom: 10px;"class="progress">
+                    <div style="background-color: #6524ff;" id="progressId" class="progress-bar" role="progressbar" aria-valuenow="{{total_quantity}}" aria-valuemin="0" aria-valuemax="{{product.quantity}}">{{percent}}%</div>
+                </div>
             </div>
             <div class="goodsInfo--crewPrice">
                 <header>가격</header>
                 <span>{{ product.price }}원</span>
             </div>
-            <div class="ui violet progress"><div class="bar"></div></div>
 
             <div class="goodsInfo--likeBtn">
                 <button>
@@ -80,12 +82,19 @@
                 <!-- css cursor : pointer 필요 -->
                 <button
                     type="submit"
-                    onclick="location.href='{% url 'purchase' %}'"
+                    onclick="location.href='{% url 'purchase' product.id %}'"
                 >
                     신청하기
                 </button>
             </div>
         </section>
     </div>
+    <script>
+        var cur_progress = document.getElementById("progressId");
+        //console.log(cur_progress);
+        var percent = {{percent}};
+        percent = String(percent) + "%";
+        cur_progress.style.width = percent;
+    </script>
     {% endblock %}
 </body>

@@ -7,8 +7,8 @@ def noticePost(request):
 def index(request):
     return render(request, 'main/index.html')
 
-def purchase(request):
-    return render(request, 'goods/purchase.html')
+# def purchase(request):
+#     return render(request, 'goods/purchase.html')
 # review 테스트중
 def review(request):
     return render(request, 'review/review-post.html')
