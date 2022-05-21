@@ -97,7 +97,7 @@
         >
             <div class="reviewBox--Info">
                 <header>{{ review.title }}</header>
-                <span> 작성자 </span> <!-- 유저 정보 가져오기 -->
+                <span> {{ review.author }} </span> <!-- 유저 정보 가져오기 -->
                 {% if review.satisfaction == '1' %}
                 <div class="reviewBox--scoreBox">
                     <i class="fas fa-star fa-1x"></i>
