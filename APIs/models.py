@@ -65,7 +65,7 @@ class Review(models.Model):
     price = models.IntegerField(verbose_name='가격')
     satisfaction = models.CharField(max_length=10, choices=SATIS_CHOICES, verbose_name='만족도')
     # 작성자 정보 추가 필요
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
 
     def __str__(self):
@@ -91,10 +91,16 @@ class Apply(models.Model):
         ('purple', 'Purple')
     }
 
+    RECEIVE_CHOICES = {
+        ('택배수령', '택배수령'),
+        ('대면수령', '대면수령')
+    }
+
     username = models.CharField(max_length=20, verbose_name='성명')
     quantity = models.IntegerField(verbose_name='수량')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     size = models.CharField(max_length=10, choices=SIZE_CHOICES, verbose_name='사이즈', null='True')
-    receive = models.CharField(max_length=10, verbose_name='수령방법')
+    receive = models.CharField(max_length=10, choices=RECEIVE_CHOICES ,verbose_name='수령방법')
     address = models.CharField(max_length=50, verbose_name='주소', blank='True', null='True')
     color = models.CharField(max_length=20, choices=COLOR_CHOICES, verbose_name='색상', null='True')
     req = models.TextField(verbose_name='요청사항', blank='True', null='True')

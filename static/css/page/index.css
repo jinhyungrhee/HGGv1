@@ -1,0 +1,24 @@
+#wrapper1{
+    width: 1835px;
+    height: 995px;
+    background-image: url('../..//images/introduction/001.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#wrapper2{
+    width: 1835px;
+    height: 995px;
+    background-image: url('../..//images/introduction/002.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#wrapper3{
+    width: 1835px;
+    height: 995px;
+    background-image: url('../..//images/introduction/003.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

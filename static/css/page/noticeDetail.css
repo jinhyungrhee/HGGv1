@@ -1,0 +1,56 @@
+.noticeBox {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noticeBox--body {
+    margin-top: 3rem;
+    border: 1px solid #ced4da;
+    width: 60%;
+}
+
+.noticeBox--article {
+    padding: 2rem;
+    background-color: white;
+    height: auto;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.noticeBox--writer {
+    background-color: white;
+    padding: 0.3rem;
+    font-size: 0.7rem;
+}
+.noticeBox--createDate {
+    background-color: white;
+    font-size: 0.5rem;
+    padding: 0.5rem;
+}
+
+.noticeBox--name {
+    color: white;
+    background-color: var(--brand-color);
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.noticeBox--article {
+    box-sizing: border-box;
+    padding: 2rem;
+    background-color: white;
+    height: auto;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.noticeBox--article > img {
+    margin-bottom: 2rem;
+}

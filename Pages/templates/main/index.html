@@ -12,6 +12,10 @@
     </form>
     <!-- 버튼위치관련 -->
     <div class="statusBar--pageBtn">
+      {% if user.is_authenticated %}
+        <button onclick="location.href='{% url 'drawing' %}'">시안제작</button>
+      {% else %}
+      {% endif %}     
       <button onclick="location.href='{% url 'register' %}'">상품등록</button>
       {% if user.is_authenticated %}
         <button onclick="location.href='{% url 'logout' %}'">로그아웃</button>

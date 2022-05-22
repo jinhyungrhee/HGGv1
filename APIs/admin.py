@@ -12,7 +12,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'description', 'image', 'created_at')
 #admin.site.register(Product, ProductAdmin)
 
-# Review 테이블 등록 - author 추가
+# Review 테이블 등록
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('title', 'content', 'image', 'category', 'store', 'delivery', 'price', 'satisfaction', 'author' ,'created_at')
@@ -20,7 +20,7 @@ class ReviewAdmin(admin.ModelAdmin):
 # Apply 테이블 등록
 @admin.register(Apply)
 class ApplyAdmin(admin.ModelAdmin):
-    list_display = ('username', 'quantity', 'size', 'receive', 'address', 'color', 'req', 'created_at')
+    list_display = ('username', 'quantity', 'size', 'receive', 'address', 'color', 'req', 'product', 'created_at')
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):

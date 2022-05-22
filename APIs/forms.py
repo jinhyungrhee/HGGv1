@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from .models import Product
+from .models import Apply, Product
 from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from .models import Product, Review, User
@@ -75,3 +75,40 @@ class RegisterForm(forms.Form):
             self.add_error('price', '값이 없습니다.')
             self.add_error('description', '값이 없습니다.')
             self.add_error('image', '값이 없습니다.')
+
+class PurchaseCreateForm(forms.ModelForm):
+    class Meta:
+        model = Apply
+        fields = [
+            'username',
+            'quantity',
+            'size',
+            'receive',
+            'address',
+            'color',
+            'req',
+            'product',
+        ]
+        widgets = {
+            'product' : forms.HiddenInput,
+        }
+
+# 리뷰 폼 추가 필요
+class ReviewCreateForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = [
+            'title',
+            'content',
+            'image',
+            'category',
+            'store',
+            'delivery',
+            'price',
+            'satisfaction',
+            'author',
+        ]
+        widgets = {
+            # 'author': forms.HiddenInput,
+            'content' : forms.Textarea,
+        }

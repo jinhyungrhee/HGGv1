@@ -95,8 +95,14 @@ var $selectBlendType = $('[name="select-blend-type"]');
 
 // Image editor
 var imageEditor = new tui.ImageEditor('.tui-image-editor', {
+  includeUI: {
+    loadImage: {
+      path: '../static/img/sian.png',
+      name: 'SampleImage',
+    },
+  },
   cssMaxWidth: 700,
-  cssMaxHeight: 500,
+  cssMaxHeight: 1000,
   selectionStyle: {
     cornerSize: 20,
     rotatingPointOffset: 70,
@@ -177,7 +183,7 @@ function base64ToBlob(data) {
 function resizeEditor() {
   var $editor = $('.tui-image-editor');
   var $container = $('.tui-image-editor-canvas-container');
-  var height = parseFloat($container.css('max-height'));
+  var height = '800px';
 
   $editor.height(height);
 }
@@ -315,7 +321,11 @@ imageEditor.on({
   },
   objectActivated: function (obj) {
     activeObjectId = obj.id;
-    if (obj.type === 'rect' || obj.type === 'circle' || obj.type === 'triangle') {
+    if (
+      obj.type === 'rect' ||
+      obj.type === 'circle' ||
+      obj.type === 'triangle'
+    ) {
       showSubMenu('shape');
       setShapeToolbar(obj);
       activateShapeMode();
@@ -330,7 +340,10 @@ imageEditor.on({
     }
   },
   mousedown: function (event, originPointer) {
-    if ($imageFilterSubMenu.is(':visible') && imageEditor.hasFilter('colorFilter')) {
+    if (
+      $imageFilterSubMenu.is(':visible') &&
+      imageEditor.hasFilter('colorFilter')
+    ) {
       imageEditor.applyFilter('colorFilter', {
         x: parseInt(originPointer.x, 10),
         y: parseInt(originPointer.y, 10),
@@ -444,7 +457,9 @@ $btnRotateCounterClockWise.on('click', function () {
 
 $inputRotationRange.on('mousedown', function () {
   var changeAngle = function () {
-    imageEditor.setAngle(parseInt($inputRotationRange.val(), 10))['catch'](function () {});
+    imageEditor
+      .setAngle(parseInt($inputRotationRange.val(), 10))
+      ['catch'](function () {});
   };
   $(document).on('mousemove', changeAngle);
   $(document).on('mouseup', function stopChangingAngle() {
@@ -454,7 +469,9 @@ $inputRotationRange.on('mousedown', function () {
 });
 
 $inputRotationRange.on('change', function () {
-  imageEditor.setAngle(parseInt($inputRotationRange.val(), 10))['catch'](function () {});
+  imageEditor
+    .setAngle(parseInt($inputRotationRange.val(), 10))
+    ['catch'](function () {});
 });
 
 $inputBrushWidthRange.on('change', function () {
@@ -682,7 +699,9 @@ $btnRegisterIcon.on('click', function () {
   $iconSubMenu
     .find('.menu-item')
     .eq(3)
-    .after('<li id="customArrow" class="menu-item icon-text" data-icon-type="customArrow">↑</li>');
+    .after(
+      '<li id="customArrow" class="menu-item icon-text" data-icon-type="customArrow">↑</li>'
+    );
 
   imageEditor.registerIcons({
     customArrow: 'M 60 0 L 120 60 H 90 L 75 45 V 180 H 45 V 45 L 30 60 H 0 Z',
@@ -747,12 +766,14 @@ $btnLoadMaskImage.on('change', function () {
   if (file) {
     imgUrl = URL.createObjectURL(file);
 
-    imageEditor.loadImageFromURL(imageEditor.toDataURL(), 'FilterImage').then(function () {
-      imageEditor.addImageObject(imgUrl).then(function (objectProps) {
-        URL.revokeObjectURL(file);
-        console.log(objectProps);
+    imageEditor
+      .loadImageFromURL(imageEditor.toDataURL(), 'FilterImage')
+      .then(function () {
+        imageEditor.addImageObject(imgUrl).then(function (objectProps) {
+          URL.revokeObjectURL(file);
+          console.log(objectProps);
+        });
       });
-    });
   }
 });
 
@@ -911,10 +932,12 @@ $inputRangeColorFilterValue.on('change', function () {
 // Etc..
 
 // Load sample image
-imageEditor.loadImageFromURL('img/sampleImage.jpg', 'SampleImage').then(function (sizeValue) {
-  console.log(sizeValue);
-  imageEditor.clearUndoStack();
-});
+imageEditor
+  .loadImageFromURL('img/sampleImage.jpg', 'SampleImage')
+  .then(function (sizeValue) {
+    console.log(sizeValue);
+    imageEditor.clearUndoStack();
+  });
 
 // IE9 Unselectable
 $('.menu').on('selectstart', function () {

@@ -2,10 +2,21 @@
   border: 1px solid black;
 }
 .body-container {
-  width: 1000px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .tui-image-editor-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: center;
   min-height: 250px;
+  /* height: 30px; */
 }
 .menu {
   padding: 0;
@@ -64,19 +75,24 @@
 .sub-menu-container {
   font-size: 14px;
   margin-bottom: 1em;
+  height: auto;
   display: none;
 }
 .tui-image-editor {
-  height: 500px;
+  height: 400px;
+}
+.tui-image-editor-size-wrap {
+  height: 400px;
 }
 .tui-image-editor-canvas-container {
   margin: 0 auto;
-  top: 50%;
+  top: 30%;
+
   transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  border: 1px dashed black;
+  border: none;
   overflow: hidden;
 }
 .tui-colorpicker-container {
