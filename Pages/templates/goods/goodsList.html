@@ -27,7 +27,11 @@
             <!-- 버튼위치관련 -->
             <div class="statusBar--pageBtn">
                 {% if user.is_authenticated %}
-                    <button onclick="location.href='{% url 'drawing' %}'">시안제작</button>
+                    {% if user.nickname == "한국외대" %}
+                    <button onclick="location.href='{% url 'drawHufs' %}'">시안제작</button>
+                    {% elif user.nickname == "경희대" %}
+                    <button onclick="location.href='{% url 'drawKhu' %}'">시안제작</button>
+                    {% endif %}
                 {% else %}
                 {% endif %}   
                 <button onclick="location.href='{% url 'register' %}'">

@@ -58,5 +58,6 @@ urlpatterns = [
     # 검색 기능
     path('searchProduct/', searchResult, name='search'),
     # 시안제작 기능
-    path('draw/', draw, name='drawing'),
+    path('drawHufs/', drawHufs, name='drawHufs'),
+    path('drawKhu/', drawKhu, name='drawKhu'),
 ]

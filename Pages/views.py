@@ -38,5 +38,8 @@ def applyComplete(request):
     return render(request, 'complete/apply-complete.html')
 
 # 시안 제작 페이지
-def draw(request):
-    return render(request, 'drawing/draw-board.html')
+def drawHufs(request):
+    return render(request, 'drawing/draw-board-hufs.html')
+
+def drawKhu(request):
+    return render(request, 'drawing/draw-board-khu.html')

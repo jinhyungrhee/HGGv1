@@ -97,7 +97,7 @@ var $selectBlendType = $('[name="select-blend-type"]');
 var imageEditor = new tui.ImageEditor('.tui-image-editor', {
   includeUI: {
     loadImage: {
-      path: '../static/img/sian.png',
+      path: '../static/img/sian-hufs.png',
       name: 'SampleImage',
     },
   },

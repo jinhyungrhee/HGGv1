@@ -14,10 +14,10 @@ class User(AbstractUser):
     )
     nickname = models.CharField(
         max_length=15, 
-        unique=True, 
+        # unique=True, 
         null=True,
-        validators=[validate_no_special_characters],
-        error_messages={'unique' : '이미 사용중인 닉네임입니다.'},
+        # validators=[validate_no_special_characters],
+        # error_messages={'unique' : '이미 사용중인 닉네임입니다.'},
         verbose_name="닉네임"
     )
     kakaoId = models.CharField(max_length=50, verbose_name="카카오톡 ID")
