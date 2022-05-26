@@ -127,13 +127,25 @@
                     >
                         {{ product.name }}
                     </div>
-                    {% if product.image %}
-                    <img
-                        height="300px"
-                        width="250px"
-                        src="{{ product.image.url }}"
-                        alt=""
-                    />
+                    {% if product.due_date|date:'Y-m-d' > current_date|date:'Y-m-d' %}
+                        {% if product.image %}
+                        <img
+                            height="300px"
+                            width="250px"
+                            src="{{ product.image.url }}"
+                            alt=""
+                        />
+                        {% endif %}
+                    {% else %}
+                        {% if product.image %}
+                        <img
+                            style="filter:brightness(30%)"
+                            height="300px"
+                            width="250px"
+                            src="{{ product.image.url }}"
+                            alt=""
+                        />
+                        {% endif %}
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">
@@ -147,4 +159,5 @@
         </div>
     </div>
     {% endblock %}
+
 </body>

@@ -89,6 +89,14 @@
                 placeholder="구매가격을 입력해주세요."
               />
             </li>
+
+            <li type="hidden">
+              <input 
+                  type = "hidden" 
+                  value ="{{purchase_id}}" 
+                  name="{{form.product.name}}"
+              />
+            </li>
             <!-- <input type = "hidden" value ="{{username}}" name="{{form.user.username}}"> -->
           </ul>
             <!-- 만족도 form 처리는 일단 보류 -->
@@ -124,7 +132,7 @@
               </div>
             </li>
           </ul>
-
+          
           <div>
             <button type="submit">등록하기</button>
           </div>

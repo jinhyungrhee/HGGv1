@@ -8,11 +8,11 @@ from .models import Product, Review, User
 # 일단 사용 X
 # 일단은 formView대신 CreateView 사용해서 상품입력 완성했음
 
-class RegisterForm(forms.ModelForm):
-    class Meta:
-        model = Product
-        # 일단 'created_at'은 제외
-        fields = ['name', 'price', 'description']
+# class RegisterForm(forms.ModelForm):
+#     class Meta:
+#         model = Product
+#         # 일단 'created_at'은 제외
+#         fields = ['name', 'price', 'description']
 
 # 회원가입 폼
 class SignupForm(forms.ModelForm):
@@ -107,8 +107,10 @@ class ReviewCreateForm(forms.ModelForm):
             'price',
             'satisfaction',
             'author',
+            'product',
         ]
         widgets = {
             # 'author': forms.HiddenInput,
+            'product' : forms.HiddenInput,
             'content' : forms.Textarea,
         }

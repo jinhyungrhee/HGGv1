@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 from django.contrib.auth import views
-from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, posts_list, ReviewDetail, post_detail, searchResult, draw
+from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, posts_list, review_list, ReviewDetail, post_detail, searchResult, draw
 # from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, signup, UserLoginView, posts_list, ReviewDetail, post_detail, searchResult
 
 urlpatterns = [
@@ -27,35 +27,36 @@ urlpatterns = [
     path('noticeDetail/<int:post_id>', post_detail, name="noticeDetail"),
     path('', index, name="index"),
     # 신청하기
-    path('purchase/<int:purchase_id>', ApplyCreate.as_view(), name="purchase"),
+    path('applyProduct/<int:purchase_id>', ApplyCreate.as_view(), name="purchase"),
     # 수정 : path('register/', register, name="register"),
-    path('register/', ProductCreate.as_view(), name='register'),
+    path('productRegister/', ProductCreate.as_view(), name='register'),
     # 상품리스트 보여주기
     path('productList/', ProductList.as_view(), name='productList'),
-    path('review/', ReviewCreate.as_view(), name="review"),
+    path('writeReview/<int:purchase_id>', ReviewCreate.as_view(), name="writeReview"),
     # 리뷰리스트 보여주기
     path('reviewList/', ReviewList.as_view(), name='reviewList'),
+    # path('reviewList/', review_list, name='reviewList'),
     # 상품등록 완료 페이지
-    path('complete1/', registerComplete, name="registerComplete"),
+    path('completeRegister/', registerComplete, name="registerComplete"),
     # 리뷰등록 완료 페이지
-    path('complete2/', reviewComplete, name="reviewComplete"),
+    path('completeReview/', reviewComplete, name="reviewComplete"),
     # 로그인 -> **수정필요**
     # path('login/', UserLoginView.as_view(), name="loginIndex"),
     # 로그아웃 -> **수정필요**
-    path('accout/logout/', views.LogoutView.as_view(), name='logout'),
+    path('account/logout/', views.LogoutView.as_view(), name='logout'),
     # 신청 완료 페이지
-    path('complete3/', applyComplete, name="applyComplete"),
+    path('completeApply/', applyComplete, name="applyComplete"),
     path('userInformation/', userInformation, name="userInformation"),
     # 회원가입 -> **수정필요**
     # path('signup/', signup, name="signup"),
     # 상품 상세보기
-    path('goodsDetail/<int:pk>', GoodsDetail.as_view(), name="goodsDetail"),
+    path('productDetail/<int:pk>', GoodsDetail.as_view(), name="goodsDetail"),
     path('reviewBoard/', reviewBoard, name="reviewBoard"),
     path('submitComplete/',submitComplete,name="submitComplete"),
     # 리뷰 자세히
     path('reviewDetail/<int:pk>', ReviewDetail.as_view(), name="reviewDetail"),
     # 검색 기능
-    path('search/', searchResult, name='search'),
+    path('searchProduct/', searchResult, name='search'),
     # 시안제작 기능
-    path('drawing/', draw, name='drawing'),
+    path('draw/', draw, name='drawing'),
 ]

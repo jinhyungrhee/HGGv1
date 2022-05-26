@@ -15,7 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 # Review 테이블 등록
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'image', 'category', 'store', 'delivery', 'price', 'satisfaction', 'author' ,'created_at')
+    list_display = ('title', 'content', 'image', 'category', 'store', 'delivery', 'price', 'satisfaction', 'author', 'product' ,'created_at')
 
 # Apply 테이블 등록
 @admin.register(Apply)

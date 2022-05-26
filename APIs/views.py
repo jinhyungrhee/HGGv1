@@ -1,4 +1,5 @@
 from math import ceil
+from datetime import datetime
 from django.contrib.auth import authenticate, login
 from django.http import request
 from django.shortcuts import redirect, render
@@ -22,12 +23,18 @@ class ProductList(ListView):
     model = Product
     template_name = 'goods/goodsList.html'
 
+    def get_context_data(self, **kwargs):
+        #생성된 context는 Template으로 전달됨
+        context = super().get_context_data(**kwargs)
+        context['current_date'] = datetime.now()
+        return context
+
 class ProductCreate(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     model = Product
     fields = '__all__'
     template_name = 'goods/goodsRegister.html'
-    success_url = '../complete1/'
+    success_url = '../completeRegister/'
 
     def post(self, request, *args, **kwargs):
         self.object = None
@@ -44,6 +51,12 @@ class ReviewCreate(LoginRequiredMixin, CreateView):
     template_name = 'review/review-post.html'
     # success_url = '../complete2/'
     form_class = ReviewCreateForm # 추가
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        purchase_id = self.kwargs.get("purchase_id")
+        context["purchase_id"] = purchase_id
+        return context
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -111,6 +124,8 @@ class GoodsDetail(DetailView):
         print(percent)
         context['total_quantity'] = total_quantity
         context['percent'] = percent
+        context['current_date'] = datetime.now()
+        context['due_date'] = product.due_date
         return context
 
 class ApplyCreate(LoginRequiredMixin, CreateView):
@@ -135,6 +150,10 @@ class ApplyCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.product = Product.objects.get(pk=form.data.get('product'))
         return super().form_valid(form)
+
+def review_list(request):
+    reviews = Review.objects.all()
+    return render(request, 'review/reviewList.html', context={'reviews':reviews})
 
 #공지사항 관련 API
 def posts_list(request):

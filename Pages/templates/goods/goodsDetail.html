@@ -78,6 +78,7 @@
                 <button><i class="fas fa-share-alt"></i>공유하기</button>
                 <button>판매자 정보</button>
             </div>
+            {% if product.due_date|date:'Y-m-d' > current_date|date:'Y-m-d' %}
             <div class="goodsInfo--submit">
                 <!-- css cursor : pointer 필요 -->
                 <button
@@ -87,6 +88,17 @@
                     신청하기
                 </button>
             </div>
+            {% else %} 
+            <div class="goodsInfo--submit">
+                <!-- css cursor : pointer 필요 -->
+                <button
+                    type="submit"
+                    onclick="location.href='{% url 'writeReview' product.id %}'"
+                >
+                    후기 작성하기
+                </button>
+            </div>
+            {% endif %}
         </section>
     </div>
     <script>

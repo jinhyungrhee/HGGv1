@@ -66,6 +66,7 @@ class Review(models.Model):
     satisfaction = models.CharField(max_length=10, choices=SATIS_CHOICES, verbose_name='만족도')
     # 작성자 정보 추가 필요
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')
 
     def __str__(self):
@@ -116,7 +117,7 @@ class Apply(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='작성자')
-    title = models.CharField(max_length=255, verbose_name='제목',blank=False)
+    title = models.CharField(max_length=255, verbose_name='공지제목',blank=False)
     content = models.TextField()
     image = models.ImageField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -127,5 +128,5 @@ class Post(models.Model):
 
     class Meta:
         db_table = 'post'
-        verbose_name = '게시글'
-        verbose_name_plural = '게시글'
+        verbose_name = '공지글'
+        verbose_name_plural = '공지글'
