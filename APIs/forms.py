@@ -18,12 +18,12 @@ from .models import Product, Review, User
 class SignupForm(forms.ModelForm):
     class Meta:
         model = User # 사용할 모델
-        fields = ["nickname", "kakaoId"] # 사용할 필드
+        fields = ["nickname", "univ"] # 사용할 필드
     
     def signup(self, request, user):
         # 추가적인 필드에 대한 값 
         user.nickname = self.cleaned_data['nickname'] #form에 기입된 데이터는 cleaned_data로 가져옴
-        user.kakaoId = self.cleaned_data['kakaoId']
+        user.univ = self.cleaned_data['univ']
         user.save()
 
 

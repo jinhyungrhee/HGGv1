@@ -187,13 +187,23 @@ def post_write(request):
 
 #상품 검색 기능 API
 def searchResult(request):
+    current_date = datetime.now()
     products = None
     query = None
     if 'q' in request.GET:
         query = request.GET.get('q')
         products = Product.objects.all().filter(Q(name__contains=query) | Q(description__contains=query))
     
-    return render(request, 'search/search.html', {'query':query, 'products':products})
+    return render(request, 'search/search.html', {'query':query, 'products':products, 'current_date':current_date})
+
+# 내가 신청한 물품 모아보기 API
+def myProduct(request):
+    # curr_user = request.user
+    applies = Apply.objects.all().filter(username=request.user)
+    # products = Product.objects.all().filter(pk=applies)
+
+    return render(request, 'my-page/my-product.html', {'applies':applies})
+
 
 # 시안 제작 페이지
 def draw(request):

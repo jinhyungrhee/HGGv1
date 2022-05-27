@@ -57,11 +57,12 @@
                 {% endfor %}
             </div>
             <div class="registerBox--list">
-                <label for="kakaoId">카카오톡 ID</label>
-                {{ form.kakaoId|add_class:"form-control"|attr:"placeholder:카카오톡 ID"|attr:"style:border: 2px solid #6524ff"|attr:"name:kakaoId"|add_error_class:"error"}}
-                {% for error in form.kakaoId.errors %}
-                <div class="error-message">{{ error }}</div>
-                {% endfor %}
+                <label for="{{form.univ.id_for_label}}">{{form.univ.label}}</label>
+                <select name="univ">
+                    {% for radio in form.univ %}
+                        {{ radio }}
+                    {% endfor %}
+                </select>
             </div>
             <!-- {% for field in form %} {{ field.errors }}
             <div class="registerBox--list">

@@ -5,7 +5,7 @@ from APIs.models import Product, Review, Apply, Post, User
 # Register your models here.
 # User테이블 등록
 admin.site.register(User, UserAdmin)
-UserAdmin.fieldsets += (("custom fields", {"fields": ("nickname", "kakaoId", )}),)
+UserAdmin.fieldsets += (("custom fields", {"fields": ("nickname", "univ", )}),)
 
 @admin.register(Product) # 데코레이터 - register함수 대신 사용
 class ProductAdmin(admin.ModelAdmin):

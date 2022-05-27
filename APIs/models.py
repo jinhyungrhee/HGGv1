@@ -5,6 +5,12 @@ from .validators import validate_no_special_characters, validate_hufs_email
 # Create your models here.
 # User 테이블 정의
 class User(AbstractUser):
+
+    UNIV_CHOICES = {
+        ('한국외대', '한국외대'),
+        ('경희대', '경희대')
+    }
+
     email = models.EmailField(
         max_length=50,
         unique=True,
@@ -14,13 +20,14 @@ class User(AbstractUser):
     )
     nickname = models.CharField(
         max_length=15, 
-        # unique=True, 
+        unique=True,
         null=True,
-        # validators=[validate_no_special_characters],
-        # error_messages={'unique' : '이미 사용중인 닉네임입니다.'},
+        validators=[validate_no_special_characters],
+        error_messages={'unique' : '이미 사용중인 닉네임입니다.'},
         verbose_name="닉네임"
     )
-    kakaoId = models.CharField(max_length=50, verbose_name="카카오톡 ID")
+    univ = models.CharField(max_length=10, choices=UNIV_CHOICES ,verbose_name='소속대학')
+    # kakaoId = models.CharField(max_length=50, verbose_name="카카오톡 ID")
 
     def __str__(self):
         return self.username
