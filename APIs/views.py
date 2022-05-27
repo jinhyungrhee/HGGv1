@@ -205,6 +205,11 @@ def myProduct(request):
     return render(request, 'my-page/my-product.html', {'applies':applies})
 
 
+class myProductDetail(DetailView):
+    model = Apply # queryset = Product.objects.all()과 동일
+    template_name = 'my-page/my-product-detail.html'
+    context_object_name = "apply"
+
 # 시안 제작 페이지
 def draw(request):
 

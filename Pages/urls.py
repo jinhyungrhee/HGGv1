@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 from django.contrib.auth import views
-from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, posts_list, review_list, ReviewDetail, post_detail, searchResult, draw, myProduct
+from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, posts_list, review_list, ReviewDetail, post_detail, searchResult, draw, myProduct, myProductDetail
 # from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, GoodsDetail, ApplyCreate, signup, UserLoginView, posts_list, ReviewDetail, post_detail, searchResult
 
 urlpatterns = [
@@ -59,6 +59,7 @@ urlpatterns = [
     path('searchProduct/', searchResult, name='search'),
     # 내 신청 물품보기 기능
     path('myProduct/', myProduct, name='myProduct'),
+    path('myProductDetail/<int:pk>', myProductDetail.as_view(), name="myProductDetail"),
     # 시안제작 기능
     path('drawHufs/', drawHufs, name='drawHufs'),
     path('drawKhu/', drawKhu, name='drawKhu'),

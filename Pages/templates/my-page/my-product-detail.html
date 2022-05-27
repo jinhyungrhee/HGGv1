@@ -1,0 +1,163 @@
+{% extends 'base.html' %} {% load static %}
+<body>
+    {% block content %}
+    <div class="statusBar">
+        <button
+            class="statusBar--homeBtn"
+            onclick="location.href='{% url 'index' %}'"
+        >
+            H.GG
+        </button>
+        <p class="statusBar--title">상품신청내역</p>
+        <div class="statusBar--pageBtn">
+            <button onclick="location.href='{% url 'register' %}'">
+                상품등록
+            </button>
+            {% if user.is_authenticated %}
+            <button onclick="location.href='{% url 'logout' %}'">
+                로그아웃
+            </button>
+            {% else %}
+            <button onclick="location.href='{% url 'account_login' %}'">
+                로그인
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-box">
+        <div class="appForm">
+            <form method="UPDATE">
+                {% csrf_token %}
+                <div class="appForm--list">
+                    <label>성명</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        name="username"
+                        placeholder="이름을 입력해주세요."
+                        value="{{apply.username}}"
+                    />
+                </div>
+                <div class="appForm--list">
+                    <label>상품수량</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        name="quantity"
+                        placeholder="수량을 입력해주세요."
+                        value="{{apply.quantity}}"
+                    />
+                </div>
+                <div class="appForm--list">
+                    <label>사이즈</label>
+                    {% if apply.size == S %}
+                    <select name="size">
+                        <option value="">사이즈선택</option>
+                        <option value="S" selected="selected">S(95)</option>
+                        <option value="M">M(100)</option>
+                        <option value="L">L(105)</option>
+                    </select>
+                    {% elif apply.size == M %}
+                    <select name="size">
+                        <option value="">사이즈선택</option>
+                        <option value="S">S(95)</option>
+                        <option value="M" selected="selected">M(100)</option>
+                        <option value="L">L(105)</option>
+                    </select>
+                    {% else %}
+                    <select name="size">
+                        <option value="">사이즈선택</option>
+                        <option value="S">S(95)</option>
+                        <option value="M">M(100)</option>
+                        <option value="L" selected="selected">L(105)</option>
+                    </select>
+                    {% endif %}
+                </div>
+                <div class="appForm--list">
+                    <label>수령 방법</label>
+                    {% if apply.receive == delivery %}
+                        <div class="appForm--list__option">
+                            <label for="direct">
+                                <input
+                                    type="radio"
+                                    id="direct"
+                                    name="receive"
+                                    value="direct"
+                                />
+                                <i
+                                    class="far fa-check-circle xs"
+                                    style="margin-right: 0.5rem"
+                                ></i
+                                >대면 수령</label
+                            >
+                        </div>
+                    {% else %}
+                        <div class="appForm--list__option">
+                            <label for="delivery">
+                                <input
+                                    type="radio"
+                                    id="delivery"
+                                    name="receive"
+                                    value="delivery"
+                                />
+                                <i
+                                    class="far fa-check-circle"
+                                    style="margin-right: 0.5rem"
+                                ></i
+                                >택배 수령</label
+                            >
+                        </div>
+                        <div class="appForm--list__option">
+                            <label for="delivery">
+                                <i
+                                    class="far fa-check-circle"
+                                    style="margin-right: 0.5rem"
+                                ></i
+                                >위치:{{ apply.address }}</label
+                            >
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="appForm--list">
+                    <label>색상</label>
+                    {% if apply.color == red %}
+                    <select name="color">
+                        <option value="">색상선택</option>
+                        <option value="red" selected="selected">자주색</option>
+                        <option value="beige">베이지색</option>
+                        <option value="purple">자홍색</option>
+                    </select>
+                    {% elif apply.color == beige %}
+                    <select name="color">
+                        <option value="">색상선택</option>
+                        <option value="red">자주색</option>
+                        <option value="beige" selected="selected">베이지색</option>
+                        <option value="purple">자홍색</option>
+                    </select>
+                    {% else %}
+                    <select name="color">
+                        <option value="">색상선택</option>
+                        <option value="red">자주색</option>
+                        <option value="beige">베이지색</option>
+                        <option value="purple" selected="selected">자홍색</option>
+                    </select>
+                    {% endif %}
+                </div>
+
+                <div class="appForm--list">
+                    <label>기타</label>
+                    <input
+                        autocomplete="off"
+                        type="text"
+                        placeholder="기타 요청사항을 적어주세요."
+                        name="req"
+                        value="{{apply.req}}"
+                    />
+                </div>
+                <button type="submit">수정하기</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'js/delivery.js' %}"></script>
+    {% endblock %}
+</body>
