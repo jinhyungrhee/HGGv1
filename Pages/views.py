@@ -24,8 +24,8 @@ def reviewComplete(request):
 def userInformation(request):
     return render(request, 'login/input-user-information.html')
 
-def goodsDetail(request):
-    return render(request, 'goods/goodsDetail.html')
+# def goodsDetail(request): # APIs.views.py의 GoodsDetail 클래스뷰와 중복!
+#     return render(request, 'goods/goodsDetail.html')
 
 def reviewBoard(request):
     return render(request, 'review/review-board.html')
