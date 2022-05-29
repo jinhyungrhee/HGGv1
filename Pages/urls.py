@@ -22,7 +22,7 @@ from APIs.views import ProductCreate, ProductList, ReviewCreate, ReviewList, Goo
 
 urlpatterns = [
     path('noticeBoard/', posts_list, name="noticeBoard"),
-    path('noticePost/', noticePost, name="noticePost"),
+    # path('noticePost/', noticePost, name="noticePost"), # 일단 사용X
     #공지사항 디테일
     path('noticeDetail/<int:post_id>', post_detail, name="noticeDetail"),
     path('', index, name="index"),
@@ -46,13 +46,13 @@ urlpatterns = [
     path('account/logout/', views.LogoutView.as_view(), name='logout'),
     # 신청 완료 페이지
     path('completeApply/', applyComplete, name="applyComplete"),
-    path('userInformation/', userInformation, name="userInformation"),
+    # path('userInformation/', userInformation, name="userInformation"), # 사용X
     # 회원가입 -> **수정필요**
     # path('signup/', signup, name="signup"),
     # 상품 상세보기
     path('productDetail/<int:pk>', GoodsDetail.as_view(), name="goodsDetail"),
-    path('reviewBoard/', reviewBoard, name="reviewBoard"),
-    path('submitComplete/',submitComplete,name="submitComplete"),
+    # path('reviewBoard/', reviewBoard, name="reviewBoard"), # 사용X
+    # path('submitComplete/',submitComplete,name="submitComplete"), # 사용X
     # 리뷰 자세히
     path('reviewDetail/<int:pk>', ReviewDetail.as_view(), name="reviewDetail"),
     # 검색 기능

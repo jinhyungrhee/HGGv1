@@ -120,10 +120,6 @@
         </div>
     </div>
   </div>
-  {% if user.is_superuser %}
-    <button class="postBtn" onclick="location.href='{% url 'noticePost' %}'">글쓰기</button>
-  {% else %}
-  {% endif %}
-    <!-- <button class="postBtn" onclick="location.href='{% url 'noticePost' %}'">글쓰기</button> -->
+    <!-- noticePost 글쓰기 버튼 삭제 -->
   {% endblock %}
 </body>
