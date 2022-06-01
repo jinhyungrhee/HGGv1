@@ -210,3 +210,7 @@ class myProductDetail(DetailView):
     template_name = 'my-page/my-product-detail.html'
     context_object_name = "apply"
     
+
+# 시안 제작 페이지
+def draw(request):
+    return render(request, 'drawing/draw-board.html')
