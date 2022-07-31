@@ -45,7 +45,10 @@ SECRET_KEY = config('SECRET_KEY')
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'hggv1.herokuapp.com',
+    '127.0.0.1', # for local test 
+]
 
 LOGIN_REDIRECT_URL = '/'
 
