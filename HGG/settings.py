@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from decouple import config
 from pathlib import Path
 import os, json
 from django.core.exceptions import ImproperlyConfigured
@@ -17,33 +17,35 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-secret_file = os.path.join(BASE_DIR, 'secrets.json')
+# secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
+# with open(secret_file) as f:
+#     secrets = json.loads(f.read())
 
-def get_secret(setting):
-    """
-    비밀 변수를 가져오거나 명시적 예외 반환
-    """
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
+# def get_secret(setting):
+#     """
+#     비밀 변수를 가져오거나 명시적 예외 반환
+#     """
+#     try:
+#         return secrets[setting]
+#     except KeyError:
+#         error_msg = "Set the {} environment variable".format(setting)
+#         raise ImproperlyConfigured(error_msg)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEY")
+# SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+# DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = '/'
 
